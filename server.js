@@ -3,7 +3,7 @@ const app = express();
 const hbs = require('hbs');
 const fs = require('fs');
 
-const portNum = 3000;
+const portNum = process.env.PORT || 3000;
 const nowYear = new Date().getFullYear();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -55,5 +55,5 @@ var server = app.listen(portNum,()=>{
     var host = server.address().address;
     var port = server.address().port;
 
-    console.log("Server started at http://%s:%s",host,port);
+    console.log(`Server started at http://${host}:${port}`);
 });
